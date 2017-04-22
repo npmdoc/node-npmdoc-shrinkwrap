@@ -1,0 +1,1190 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/3rd-Eden/shrinkwrap"
+
+    >shrinkwrap (v0.4.0)</a>
+</h1>
+<h4>npm shrinkwrap parser, generation and comparison</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.shrinkwrap">module shrinkwrap</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.shrinkwrap">
+            function <span class="apidocSignatureSpan"></span>shrinkwrap
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.extend">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>extend
+            <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.module">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>module
+            <span class="apidocSignatureSpan">(data, range, depth)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>predefine
+            <span class="apidocSignatureSpan">(obj, pattern)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.readable">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>readable
+            <span class="apidocSignatureSpan">(method, description, clean)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.version">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>version
+            <span class="apidocSignatureSpan">(number)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.writable">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>writable
+            <span class="apidocSignatureSpan">(method, description, clean)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">shrinkwrap.</span>dependencies</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">shrinkwrap.</span>module.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">shrinkwrap.</span>version.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.shrinkwrap.module">module shrinkwrap.module</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.module.module">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>module
+            <span class="apidocSignatureSpan">(data, range, depth)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.shrinkwrap.module.prototype">module shrinkwrap.module.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.module.prototype.clone">
+            function <span class="apidocSignatureSpan">shrinkwrap.module.prototype.</span>clone
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.module.prototype.toJSON">
+            function <span class="apidocSignatureSpan">shrinkwrap.module.prototype.</span>toJSON
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.shrinkwrap.predefine">module shrinkwrap.predefine</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.predefine">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>predefine
+            <span class="apidocSignatureSpan">(obj, pattern)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.create">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>create
+            <span class="apidocSignatureSpan">(property, description, pattern)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.descriptor">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>descriptor
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.each">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>each
+            <span class="apidocSignatureSpan">(collection, iterator, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.extend">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>extend
+            <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.lazy">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>lazy
+            <span class="apidocSignatureSpan">(obj, prop, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.merge">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>merge
+            <span class="apidocSignatureSpan">(target, additional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.mixin">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>mixin
+            <span class="apidocSignatureSpan">(target)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.predefine.remove">
+            function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>remove
+            <span class="apidocSignatureSpan">(obj, keep)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>READABLE</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>WRITABLE</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.shrinkwrap.version">module shrinkwrap.version</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.version.version">
+            function <span class="apidocSignatureSpan">shrinkwrap.</span>version
+            <span class="apidocSignatureSpan">(number)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.shrinkwrap.version.prototype">module shrinkwrap.version.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.version.prototype.gt">
+            function <span class="apidocSignatureSpan">shrinkwrap.version.prototype.</span>gt
+            <span class="apidocSignatureSpan">(version)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.version.prototype.lt">
+            function <span class="apidocSignatureSpan">shrinkwrap.version.prototype.</span>lt
+            <span class="apidocSignatureSpan">(number)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.shrinkwrap.version.prototype.toString">
+            function <span class="apidocSignatureSpan">shrinkwrap.version.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.shrinkwrap" id="apidoc.module.shrinkwrap">module shrinkwrap</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.shrinkwrap" id="apidoc.element.shrinkwrap.shrinkwrap">
+        function <span class="apidocSignatureSpan"></span>shrinkwrap
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Shrinkwrap(options) {
+  this.fuse();
+
+  options = options || {};
+
+  options.registry = &#x27;registry&#x27; in options
+    ? options.registry
+    : &#x27;http://registry.nodejitsu.com/&#x27;;
+
+  options.production = &#x27;production&#x27; in options
+    ? options.production
+    : process.NODE_ENV === &#x27;production&#x27;;
+
+  options.optimize = &#x27;optimize&#x27; in options
+    ? options.optimize
+    : true;
+
+  options.limit = &#x27;limit&#x27; in options
+    ? options.limit
+    : 10;
+
+  options.mirrors = &#x27;mirrors&#x27; in options
+    ? options.mirrors
+    : false;
+
+  this.registry = &#x27;string&#x27; !== typeof options.registry
+    ? options.registry
+    : new Registry({
+    registry: options.registry || Registry.mirrors.nodejitsu,
+    githulk: options.githulk,
+    mirrors: options.mirrors
+  });
+
+  this.production = options.production;     // Don&#x27;t include devDependencies.
+  this.limit = options.limit;               // Maximum concurrency.
+  this.cache = Object.create(null);         // Dependency cache.
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.extend" id="apidoc.element.shrinkwrap.extend">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>extend
+        <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function extend(protoProps, staticProps) {
+  var parent = this
+    , child;
+
+  //
+  // The constructor function for the new subclass is either defined by you
+  // (the &#x22;constructor&#x22; property in your `extend` definition), or defaulted
+  // by us to simply call the parent&#x27;s constructor.
+  //
+  if (protoProps &#x26;&#x26; has.call(protoProps, &#x27;constructor&#x27;)) {
+    child = protoProps.constructor;
+  } else {
+    child = mode(parent);
+  }
+
+  //
+  // Set the prototype chain to inherit from `parent`, without calling
+  // `parent`&#x27;s constructor function.
+  //
+  function Surrogate() {
+    this.constructor = child;
+  }
+
+  Surrogate.prototype = parent.prototype;
+  child.prototype = new Surrogate;
+
+  //
+  // Add prototype properties (instance properties) to the subclass,
+  // if supplied.
+  //
+  if (protoProps) mixin(child.prototype, protoProps);
+
+  //
+  // Add static properties to the constructor function, if supplied.
+  //
+  copypaste(child, parent, staticProps);
+
+  //
+  // Set a convenience property in case the parent&#x27;s prototype is needed later.
+  //
+  child.__super__ = parent.prototype;
+
+  return child;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.module" id="apidoc.element.shrinkwrap.module">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>module
+        <span class="apidocSignatureSpan">(data, range, depth)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Module(data, range, depth) {
+  this._id = data.name +&#x27;@&#x27;+ range;     // An unique id that identifies this module.
+  this.released = data.released;        // The date this version go released.
+  this.licenses = data.licenses;        // The licensing.
+  this.version = data.version;          // The version of the module.
+  this.author = data._npmUser || {};    // Author of the release.
+  this.latest = data.latest;            // What the latest version is of the module.
+  this.required = range;                // Which range we required to find this module.
+  this.name = data.name;                // The name of the module.
+  this.parents = [];                    // Modules that depend on this version.
+  this.dependent = [];                  // Modules that depend on this version.
+  this.depth = depth;                   // The depth of the dependency nesting.
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine" id="apidoc.element.shrinkwrap.predefine">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>predefine
+        <span class="apidocSignatureSpan">(obj, pattern)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function predefine(obj, pattern) {
+  pattern = pattern || predefine.READABLE;
+
+  return function predefined(method, description, clean) {
+    //
+    // If we are given a description compatible Object, use that instead of
+    // setting it as value. This allows easy creation of getters and setters.
+    //
+    if (
+         !predefine.descriptor(description)
+      || is(description, &#x27;object&#x27;)
+         &#x26;&#x26; !clean
+         &#x26;&#x26; !predefine.descriptor(predefine.mixin({}, pattern, description))
+    ) { description = {
+        value: description
+      };
+    }
+
+    //
+    // Prevent thrown errors when we attempt to override a readonly
+    // property
+    //
+    var described = Object.getOwnPropertyDescriptor(obj, method);
+    if (described &#x26;&#x26; !described.configurable) {
+      return predefined;
+    }
+
+    Object.defineProperty(obj, method, !clean
+      ? predefine.mixin({}, pattern, description)
+      : description
+    );
+
+    return predefined;
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.readable" id="apidoc.element.shrinkwrap.readable">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>readable
+        <span class="apidocSignatureSpan">(method, description, clean)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function predefined(method, description, clean) {
+  //
+  // If we are given a description compatible Object, use that instead of
+  // setting it as value. This allows easy creation of getters and setters.
+  //
+  if (
+       !predefine.descriptor(description)
+    || is(description, &#x27;object&#x27;)
+       &#x26;&#x26; !clean
+       &#x26;&#x26; !predefine.descriptor(predefine.mixin({}, pattern, description))
+  ) { description = {
+      value: description
+    };
+  }
+
+  //
+  // Prevent thrown errors when we attempt to override a readonly
+  // property
+  //
+  var described = Object.getOwnPropertyDescriptor(obj, method);
+  if (described &#x26;&#x26; !described.configurable) {
+    return predefined;
+  }
+
+  Object.defineProperty(obj, method, !clean
+    ? predefine.mixin({}, pattern, description)
+    : description
+  );
+
+  return predefined;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.version" id="apidoc.element.shrinkwrap.version">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>version
+        <span class="apidocSignatureSpan">(number)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Version(number) {
+  this.number = number;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.writable" id="apidoc.element.shrinkwrap.writable">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>writable
+        <span class="apidocSignatureSpan">(method, description, clean)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function predefined(method, description, clean) {
+  //
+  // If we are given a description compatible Object, use that instead of
+  // setting it as value. This allows easy creation of getters and setters.
+  //
+  if (
+       !predefine.descriptor(description)
+    || is(description, &#x27;object&#x27;)
+       &#x26;&#x26; !clean
+       &#x26;&#x26; !predefine.descriptor(predefine.mixin({}, pattern, description))
+  ) { description = {
+      value: description
+    };
+  }
+
+  //
+  // Prevent thrown errors when we attempt to override a readonly
+  // property
+  //
+  var described = Object.getOwnPropertyDescriptor(obj, method);
+  if (described &#x26;&#x26; !described.configurable) {
+    return predefined;
+  }
+
+  Object.defineProperty(obj, method, !clean
+    ? predefine.mixin({}, pattern, description)
+    : description
+  );
+
+  return predefined;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.shrinkwrap.module" id="apidoc.module.shrinkwrap.module">module shrinkwrap.module</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.module.module" id="apidoc.element.shrinkwrap.module.module">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>module
+        <span class="apidocSignatureSpan">(data, range, depth)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Module(data, range, depth) {
+  this._id = data.name +&#x27;@&#x27;+ range;     // An unique id that identifies this module.
+  this.released = data.released;        // The date this version go released.
+  this.licenses = data.licenses;        // The licensing.
+  this.version = data.version;          // The version of the module.
+  this.author = data._npmUser || {};    // Author of the release.
+  this.latest = data.latest;            // What the latest version is of the module.
+  this.required = range;                // Which range we required to find this module.
+  this.name = data.name;                // The name of the module.
+  this.parents = [];                    // Modules that depend on this version.
+  this.dependent = [];                  // Modules that depend on this version.
+  this.depth = depth;                   // The depth of the dependency nesting.
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.shrinkwrap.module.prototype" id="apidoc.module.shrinkwrap.module.prototype">module shrinkwrap.module.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.module.prototype.clone" id="apidoc.element.shrinkwrap.module.prototype.clone">
+        function <span class="apidocSignatureSpan">shrinkwrap.module.prototype.</span>clone
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clone(data) {
+  var module = new Module({
+    _npmUser: JSON.parse(JSON.stringify(this.author || {})),
+    released: this.released,
+    licenses: this.licenses,
+    version: this.version,
+    latest: this.latest,
+    name: this.name
+  }, this.required, this.depth);
+
+  if (data) Object.keys(data).forEach(function each(prop) {
+    module[prop] = data[prop];
+  });
+
+  return module;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    shrinkwrap.release(spec.name, spec.range, function release(err, data, cached) {
+if (err || !data) {
+  if (err) debug(&#x27;failed to resolve %s due to error: &#x27;, spec.name, err);
+  return worker(err);
+}
+
+var clone = queue.dependencytree[spec._id] = data.module.<span class="apidocCodeKeywordSpan">clone</span>({
+  parents: spec.parents,
+  depth: spec.depth
+});
+
+spec.parents.forEach(function each(parent) {
+  parent.dependencies[spec.name] = queue.dependencytree[spec._id];
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.module.prototype.toJSON" id="apidoc.element.shrinkwrap.module.prototype.toJSON">
+        function <span class="apidocSignatureSpan">shrinkwrap.module.prototype.</span>toJSON
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toJSON() {
+  return {
+    uptodate: this.uptodate,
+    required: this.required,
+    released: this.released,
+    licenses: this.licenses,
+    version: this.version,
+    pinned: this.pinned,
+    author: this.author,
+    latest: this.latest,
+    depth: this.depth,
+    name: this.name,
+    _id: this._id,
+
+    parents: (this.parents || this.dependent || []).map(function map(parent) {
+      return parent.name +&#x27;@&#x27;+ parent.version;
+    })
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.shrinkwrap.predefine" id="apidoc.module.shrinkwrap.predefine">module shrinkwrap.predefine</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.predefine" id="apidoc.element.shrinkwrap.predefine.predefine">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>predefine
+        <span class="apidocSignatureSpan">(obj, pattern)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function predefine(obj, pattern) {
+  pattern = pattern || predefine.READABLE;
+
+  return function predefined(method, description, clean) {
+    //
+    // If we are given a description compatible Object, use that instead of
+    // setting it as value. This allows easy creation of getters and setters.
+    //
+    if (
+         !predefine.descriptor(description)
+      || is(description, &#x27;object&#x27;)
+         &#x26;&#x26; !clean
+         &#x26;&#x26; !predefine.descriptor(predefine.mixin({}, pattern, description))
+    ) { description = {
+        value: description
+      };
+    }
+
+    //
+    // Prevent thrown errors when we attempt to override a readonly
+    // property
+    //
+    var described = Object.getOwnPropertyDescriptor(obj, method);
+    if (described &#x26;&#x26; !described.configurable) {
+      return predefined;
+    }
+
+    Object.defineProperty(obj, method, !clean
+      ? predefine.mixin({}, pattern, description)
+      : description
+    );
+
+    return predefined;
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.create" id="apidoc.element.shrinkwrap.predefine.create">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>create
+        <span class="apidocSignatureSpan">(property, description, pattern)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function create(property, description, pattern) {
+  pattern = pattern || {};
+
+  if (!predefine.descriptor(description)) description = {
+    enumberable: false,
+    value: description
+  };
+
+  var definition = {};
+  definition[property] = predefine.mixin(pattern, description);
+
+  return definition;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+   registry: options.registry || Registry.mirrors.nodejitsu,
+   githulk: options.githulk,
+   mirrors: options.mirrors
+ });
+
+ this.production = options.production;     // Don&#x27;t include devDependencies.
+ this.limit = options.limit;               // Maximum concurrency.
+ this.cache = Object.<span class="apidocCodeKeywordSpan">create</span>(null);         // Dependency cache.
+}
+
+fuse(Shrinkwrap, require(&#x27;eventemitter3&#x27;));
+
+/**
+* No previous package, resolve one for us instead.
+*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.descriptor" id="apidoc.element.shrinkwrap.predefine.descriptor">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>descriptor
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function descriptor(obj) {
+  if (!obj || &#x27;object&#x27; !== typeof obj || Array.isArray(obj)) return false;
+
+  var keys = Object.keys(obj);
+
+  //
+  // A descriptor can only be a data or accessor descriptor, never both.
+  // An data descriptor can only specify:
+  //
+  // - configurable
+  // - enumerable
+  // - (optional) value
+  // - (optional) writable
+  //
+  // And an accessor descriptor can only specify;
+  //
+  // - configurable
+  // - enumerable
+  // - (optional) get
+  // - (optional) set
+  //
+  if (
+       (&#x27;value&#x27; in obj || &#x27;writable&#x27; in obj)
+    &#x26;&#x26; (&#x27;function&#x27; === typeof obj.set || &#x27;function&#x27; === typeof obj.get)
+  ) return false;
+
+  return !!keys.length &#x26;&#x26; keys.every(function allowed(key) {
+    var type = description[key]
+      , valid = type === undefined || is(obj[key], type);
+
+    return key in description &#x26;&#x26; valid;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.each" id="apidoc.element.shrinkwrap.predefine.each">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>each
+        <span class="apidocSignatureSpan">(collection, iterator, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function each(collection, iterator, context) {
+  if (arguments.length === 1) {
+    iterator = collection;
+    collection = this;
+  }
+
+  var isArray = Array.isArray(collection || this)
+    , length = collection.length
+    , i = 0
+    , value;
+
+  if (context) {
+    if (isArray) {
+      for (; i &#x3c; length; i++) {
+        value = iterator.apply(collection[ i ], context);
+        if (value === false) break;
+      }
+    } else {
+      for (i in collection) {
+        value = iterator.apply(collection[ i ], context);
+        if (value === false) break;
+      }
+    }
+  } else {
+    if (isArray) {
+      for (; i &#x3c; length; i++) {
+        value = iterator.call(collection[i], i, collection[i]);
+        if (value === false) break;
+      }
+    } else {
+      for (i in collection) {
+        value = iterator.call(collection[i], i, collection[i]);
+        if (value === false) break;
+      }
+    }
+  }
+
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.extend" id="apidoc.element.shrinkwrap.predefine.extend">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>extend
+        <span class="apidocSignatureSpan">(protoProps, staticProps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function extend(protoProps, staticProps) {
+  var parent = this
+    , child;
+
+  //
+  // The constructor function for the new subclass is either defined by you
+  // (the &#x22;constructor&#x22; property in your `extend` definition), or defaulted
+  // by us to simply call the parent&#x27;s constructor.
+  //
+  if (protoProps &#x26;&#x26; has.call(protoProps, &#x27;constructor&#x27;)) {
+    child = protoProps.constructor;
+  } else {
+    child = mode(parent);
+  }
+
+  //
+  // Set the prototype chain to inherit from `parent`, without calling
+  // `parent`&#x27;s constructor function.
+  //
+  function Surrogate() {
+    this.constructor = child;
+  }
+
+  Surrogate.prototype = parent.prototype;
+  child.prototype = new Surrogate;
+
+  //
+  // Add prototype properties (instance properties) to the subclass,
+  // if supplied.
+  //
+  if (protoProps) mixin(child.prototype, protoProps);
+
+  //
+  // Add static properties to the constructor function, if supplied.
+  //
+  copypaste(child, parent, staticProps);
+
+  //
+  // Set a convenience property in case the parent&#x27;s prototype is needed later.
+  //
+  child.__super__ = parent.prototype;
+
+  return child;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.lazy" id="apidoc.element.shrinkwrap.predefine.lazy">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>lazy
+        <span class="apidocSignatureSpan">(obj, prop, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function lazy(obj, prop, fn) {
+  Object.defineProperty(obj, prop, {
+    configurable: true,
+
+    get: function get() {
+      return Object.defineProperty(this, prop, {
+        value: fn.call(this)
+      })[prop];
+    },
+
+    set: function set(value) {
+      return Object.defineProperty(this, prop, {
+        value: value
+      })[prop];
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.merge" id="apidoc.element.shrinkwrap.predefine.merge">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>merge
+        <span class="apidocSignatureSpan">(target, additional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function merge(target, additional) {
+  var result = target
+    , undefined;
+
+  if (Array.isArray(target)) {
+    each(additional, function arrayForEach(index) {
+      if (JSON.stringify(target).indexOf(JSON.stringify(additional[index])) === -1) {
+        result.push(additional[index]);
+      }
+    });
+  } else if (&#x27;object&#x27; === typeof target) {
+    each(additional, function objectForEach(key, value) {
+      if (target[key] === undefined) {
+        result[key] = value;
+      } else {
+        result[key] = merge(target[key], additional[key]);
+      }
+    });
+  } else {
+    result = additional;
+  }
+
+  return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.mixin" id="apidoc.element.shrinkwrap.predefine.mixin">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>mixin
+        <span class="apidocSignatureSpan">(target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function mixin(target) {
+  Array.prototype.slice.call(arguments, 1).forEach(function forEach(o) {
+    Object.getOwnPropertyNames(o).forEach(function eachAttr(attr) {
+      Object.defineProperty(target, attr, Object.getOwnPropertyDescriptor(o, attr));
+    });
+  });
+
+  return target;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.predefine.remove" id="apidoc.element.shrinkwrap.predefine.remove">
+        function <span class="apidocSignatureSpan">shrinkwrap.predefine.</span>remove
+        <span class="apidocSignatureSpan">(obj, keep)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function remove(obj, keep) {
+  if (!obj) return false;
+  keep = keep || [];
+
+  for (var prop in obj) {
+    if (has.call(obj, prop) &#x26;&#x26; !~keep.indexOf(prop)) {
+      delete obj[prop];
+    }
+  }
+
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.shrinkwrap.version" id="apidoc.module.shrinkwrap.version">module shrinkwrap.version</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.version.version" id="apidoc.element.shrinkwrap.version.version">
+        function <span class="apidocSignatureSpan">shrinkwrap.</span>version
+        <span class="apidocSignatureSpan">(number)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Version(number) {
+  this.number = number;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.shrinkwrap.version.prototype" id="apidoc.module.shrinkwrap.version.prototype">module shrinkwrap.version.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.version.prototype.gt" id="apidoc.element.shrinkwrap.version.prototype.gt">
+        function <span class="apidocSignatureSpan">shrinkwrap.version.prototype.</span>gt
+        <span class="apidocSignatureSpan">(version)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function gt(version) {
+  return semver.gt(this.number, version);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Check if the version number is greater then the given `version`.
+*
+* @param {String} version Version number.
+* @returns {Boolean}
+* @api public
+*/
+Version.prototype.gt = function gt(version) {
+ return semver.<span class="apidocCodeKeywordSpan">gt</span>(this.number, version);
+};
+
+/**
+* Check if the version number is less then the given `version`.
+*
+* @param {String} version Version number.
+* @returns {Boolean}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.version.prototype.lt" id="apidoc.element.shrinkwrap.version.prototype.lt">
+        function <span class="apidocSignatureSpan">shrinkwrap.version.prototype.</span>lt
+        <span class="apidocSignatureSpan">(number)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function lt(number) {
+  return semver.lt(this.number, number);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Check if the version number is less then the given `version`.
+*
+* @param {String} version Version number.
+* @returns {Boolean}
+* @api public
+*/
+Version.prototype.lt = function lt(number) {
+ return semver.<span class="apidocCodeKeywordSpan">lt</span>(this.number, number);
+};
+
+/**
+* String representation of the current version number.
+*
+* @api private
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.shrinkwrap.version.prototype.toString" id="apidoc.element.shrinkwrap.version.prototype.toString">
+        function <span class="apidocSignatureSpan">shrinkwrap.version.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() {
+  return this.number;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
